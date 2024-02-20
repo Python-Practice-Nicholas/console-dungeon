@@ -1,11 +1,12 @@
 class Entity:
-	self._name
-	self._health
-	self._strength
-	self._speed
-	self._agility
-	self._weapon
-	self._inventory
+	def __init__(self, _name, _health, _strength, _speed, _agility, _weapon, _inventory):
+		self._name = _name
+		self._health = _health
+		self._strength =_strength
+		self._speed = _speed
+		self._agility = _agility
+		self._weapon = _weapon
+		self._inventory = _inventory
 	
 	def get_name(self):
 		return self._name
