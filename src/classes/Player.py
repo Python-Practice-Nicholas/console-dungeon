@@ -1,0 +1,24 @@
+import Entity
+
+class Player(Entity):
+		
+	def get_weapon(self):
+		return self._weapon
+		
+	def set_weapon(self, weapon_name):
+		weapon = self.get_single_item(weapon_name)
+		if weapon.type != "weapon":
+			return f"{weapon.name} is not a weapon"
+		else:
+			self._weapon = weapon
+	
+	def set_inventory_item(self, item):
+		self._inventory.update(item)
+		return self._inventory
+		
+	def remove_inventory_item(self,item_name):
+		self._inventory.pop(item_name)
+		return self._inventory
+		
+	
+		
