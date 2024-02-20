@@ -28,6 +28,7 @@ class Entity:
 		
 	def get_single_item(self, item_name):
 		item = self._inventory.get(item_name)
+		return item
 		
 	def set_strength(self, num):
 		self._strength = num
@@ -37,17 +38,24 @@ class Entity:
 		
 	def set_agility(self, num):
 		self._agility = num
+	
+	def set_health(self, num):
+		self._health = num
 		
-	def attack(self):
-		return self._strength + weapon._affect
+	# def attack(self):
+	# 	return self._strength + weapon._affect
 		
-	def take_damage(self):
-		damage = self.attack()
-		self._health - damage
+	def take_damage(self, damage):
+		# damage = self.attack()
+		health = self.get_health()
+		health -= damage
+		self.set_health(health)
 		return self._health
 		
 	def heal(self, num):
-		self._health = self._health + num
+		health = self.get_health()
+		health += num
+		self.set_health(health)
 		return self._health
 		
 	def use_item(self, item_name):
