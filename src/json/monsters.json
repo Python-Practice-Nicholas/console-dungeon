@@ -1,0 +1,10 @@
+{
+	"bat": {
+		"health": 3,
+		"strength": 1,
+		"speed": 5,
+		"agility": 7,
+		"weapon": 0,
+		"inventory": 0
+	}
+}
