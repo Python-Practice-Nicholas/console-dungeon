@@ -15,7 +15,7 @@ class Player(Entity):
 		
 	
 	def set_inventory_item(self, item):
-		self._inventory.update(item)
+		self._inventory.update({item.get_name(): {item.get_description(). item.affect, item.get_apply_to(), item.get_type()}})
 		return self._inventory
 		
 	def remove_inventory_item(self,item_name):
