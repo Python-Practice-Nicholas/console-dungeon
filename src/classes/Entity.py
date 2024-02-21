@@ -1,12 +1,12 @@
 class Entity:
 	def __init__(self, _name, _health, _strength, _speed, _agility, _weapon, _inventory):
-		self._name = _name
-		self._health = _health
-		self._strength =_strength
-		self._speed = _speed
-		self._agility = _agility
-		self._weapon = _weapon
-		self._inventory = _inventory
+		self._name = _name # Str
+		self._health = _health # Int
+		self._strength =_strength # Int
+		self._speed = _speed # Int
+		self._agility = _agility # Int
+		self._weapon = _weapon # Item
+		self._inventory = _inventory # Dictanary of Items
 	
 	def get_name(self):
 		return self._name
@@ -31,7 +31,7 @@ class Entity:
 		if item == None:
 			raise KeyError("Item not found in inventory") 
 		else:
-			return item
+			return {item_name: item}
 		
 	def set_strength(self, num):
 		self._strength = num

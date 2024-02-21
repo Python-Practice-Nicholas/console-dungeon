@@ -7,6 +7,16 @@ class Item():
 		self._affect = affect
 		self._apply_to = apply_to
 		self._type = type
+
+	def __repr__(self):
+		item = {
+			"description": self._description, 
+			"affect": self._affect, 
+			"apply_to": self._apply_to, 
+			"type": self._type
+		}
+		
+		return str(item)
 		
 	@staticmethod
 	def create_item(name):
@@ -35,3 +45,10 @@ class Item():
 		
 	def get_type(self):
 		return self._type
+
+
+# item = Item("test", "test item", 2, "speed", "potion")
+
+# g = {item.get_name(): item}
+
+# print(g)

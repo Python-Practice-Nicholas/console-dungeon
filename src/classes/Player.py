@@ -1,4 +1,5 @@
-from src.classes.Entity import Entity
+from Entity import Entity
+from Item import Item
 
 class Player(Entity):
 		
@@ -15,12 +16,17 @@ class Player(Entity):
 		
 	
 	def set_inventory_item(self, item):
-		self._inventory.update({item.get_name(): {item.get_description(). item.affect, item.get_apply_to(), item.get_type()}})
+		self._inventory.update(
+			{
+				item.get_name(): 
+				{
+					"description": item.get_description(), 
+					"affect": item.get_affect(), 
+					"apply_to": item.get_apply_to(), 
+					"type": item.get_type()
+				}
+			})
 		return self._inventory
 		
 	def remove_inventory_item(self,item_name):
 		self._inventory.pop(item_name)
-		
-		
-	
-		
