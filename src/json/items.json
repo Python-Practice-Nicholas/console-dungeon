@@ -1,0 +1,8 @@
+{
+	"sword": {
+		"description": "A regular knight's weapon",
+		"affect": 2,
+		"apply_to": "strength",
+		"type": "weapon"
+	}
+}
