@@ -28,7 +28,10 @@ class Entity:
 		
 	def get_single_item(self, item_name):
 		item = self._inventory.get(item_name)
-		return item
+		if item == None:
+			raise KeyError("Item not found in inventory") 
+		else:
+			return item
 		
 	def set_strength(self, num):
 		self._strength = num
