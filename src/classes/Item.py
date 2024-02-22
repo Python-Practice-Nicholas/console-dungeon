@@ -20,7 +20,7 @@ class Item():
 		
 	@staticmethod
 	def create_item(name):
-		with open("../json/items.json") as file:
+		with open("json/items.json") as file:
 			data = json.load(file)
 			item_data = data[name]
 			description = item_data["description"]
@@ -47,8 +47,3 @@ class Item():
 		return self._type
 
 
-# item = Item("test", "test item", 2, "speed", "potion")
-
-# g = {item.get_name(): item}
-
-# print(g)
