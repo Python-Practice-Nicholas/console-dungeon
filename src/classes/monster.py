@@ -6,6 +6,7 @@ class Monster(Entity):
 	
 	@staticmethod
 	def create_monster(name):
+		"""Static method to creat a new Monster"""
 		with open('../json/monsters.json') as file:
 			data = json.load(file)
 			monster_data = data[name]

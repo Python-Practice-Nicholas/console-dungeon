@@ -15,11 +15,11 @@ class Item():
 			"apply_to": self._apply_to, 
 			"type": self._type
 		}
-		
 		return str(item)
 		
 	@staticmethod
 	def create_item(name):
+		"""Static method to create a new item"""
 		with open("json/items.json") as file:
 			data = json.load(file)
 			item_data = data[name]
