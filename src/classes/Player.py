@@ -37,7 +37,11 @@ class Player(Entity):
 
 	def display_stats(self):
 		"""Displays the Player's current stats"""
-		pass
+		print(f"Player: {self.get_name()}")
+		print(f"Health: {self.get_health()}")
+		print(f"Strength: {self.get_strength()}")
+		print(f"Agelity: {self.get_agility()}")
+		print(f"Speed: {self.get_speed()}")
 
 	def player_save_data(self):
 		"""Returns the Player's information in a savable format"""
