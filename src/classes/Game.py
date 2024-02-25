@@ -44,42 +44,42 @@ class Game():
             match choice:
                 case "1" | "save1" | "Save1" | "save 1" | 'Save 1':
                     if data["1"] == "empty":
-                        data["1"] = self.player
+                        data["1"] = self.player.player_save_data()
                         Game.save_data_to_file(data)
                         is_choosing = False
                     else:
                         choice2 = input("Do you wish to overwrite this save? (y/n)")
 
                         if choice2 == "y":
-                            data["1"] = self.player
+                            data["1"] = self.player.player_save_data()
                             Game.save_data_to_file(data)
                             is_choosing = False
                         else:
                             pass
                 case "2" | "save2" | "Save2" | "save 2" | 'Save 2':
                     if data["2"] == "empty":
-                        data["2"] = self.player
+                        data["2"] = self.player.player_save_data()
                         Game.save_data_to_file(data)
                         is_choosing = False
                     else:
                         choice2 = input("Do you wish to overwrite this save? (y/n)")
 
                         if choice2 == "y":
-                            data["2"] = self.player
+                            data["2"] = self.player.player_save_data()
                             Game.save_data_to_file(data)
                             is_choosing = False
                         else:
                             pass
                 case "3" | "save3" | "Save3" | "save 3" | 'Save 3':
                     if data["3"] == "empty":
-                        data["3"] = self.player
-                        Game.save_data_to_file(data)
+                        data["3"] = self.player.player_save_data()
+                        Game.save_data_to_file()
                         is_choosing = False
                     else:
                         choice2 = input("Do you wish to overwrite this save? (y/n)")
 
                         if choice2 == "y":
-                            data["3"] = self.player
+                            data["3"] = self.player.player_save_data()
                             Game.save_data_to_file(data)
                             is_choosing = False
                         else:
