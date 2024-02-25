@@ -45,4 +45,12 @@ class Player(Entity):
 
 	def player_save_data(self):
 		"""Returns the Player's information in a savable format"""
-		pass
+		return {
+			"name": self.get_name(), 
+			"Health": self.get_health(), 
+			"strength": self.get_strength(), 
+			"speed": self.get_speed(), 
+			"agility": self.get_agility(), 
+			"weapon": self.get_weapon(),
+			"inventory": self.get_inventory()
+			}
