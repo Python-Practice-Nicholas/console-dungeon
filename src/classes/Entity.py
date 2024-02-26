@@ -45,8 +45,7 @@ class Entity:
 	def set_health(self, num):
 		self._health = num
 		
-	# def attack(self):
-	# 	return self._strength + weapon._affect
+	
 		
 	def take_damage(self, damage):
 		# damage = self.attack()
