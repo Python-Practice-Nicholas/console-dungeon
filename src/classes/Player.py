@@ -15,6 +15,9 @@ class Player(Entity):
 		else:
 			self._weapon = {weapon_name: weapon}
 			self.remove_inventory_item(weapon_name)
+	
+	def attack(self):
+		return self._strength + self._weapon.get_affect()
 		
 	
 	def set_inventory_item(self, item):
@@ -45,12 +48,28 @@ class Player(Entity):
 
 	def player_save_data(self):
 		"""Returns the Player's information in a savable format"""
+		inventory = {}
+		for item in self.get_inventory():
+			i = self.parse_item(item)
+			inventory.update(i)
+
 		return {
 			"name": self.get_name(), 
 			"Health": self.get_health(), 
 			"strength": self.get_strength(), 
 			"speed": self.get_speed(), 
 			"agility": self.get_agility(), 
-			"weapon": self.get_weapon(),
-			"inventory": self.get_inventory()
+			"weapon": self.parse_item(self.get_weapon()),
+			"inventory": inventory
 			}
+	
+	def parse_item(self, item):
+		return {
+			item.get_name(): {
+				"description": item.get_description(),
+				"affect": item.get_affect(),
+				"apply_to": item.get_apply_to(),
+				"type": item.get_type()
+			}
+		}
+
