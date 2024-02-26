@@ -108,13 +108,34 @@ class Game():
 
             match choice:
                 case "1" | "save1" | "Save1" | "save 1" | 'Save 1':
-                    self.player = Player(data["1"])
+                    self.player = Player(
+                        data["1"]["name"], 
+                        data["1"]["health"], 
+                        data["1"]["strength"], 
+                        data["1"]["speed"],
+                        data["1"]["agility"],
+                        data["1"]["weapon"],
+                        data["1"]["inventory"])
                     is_choosing = False
                 case "2" | "save2" | "Save2" | "save 2" | 'Save 2':
-                    self.player = Player(data["2"])
+                    self.player = Player(
+                        data["1"]["name"], 
+                        data["1"]["health"], 
+                        data["1"]["strength"], 
+                        data["1"]["speed"],
+                        data["1"]["agility"],
+                        data["1"]["weapon"],
+                        data["1"]["inventory"])
                     is_choosing = False
                 case "3" | "save3" | "Save3" | "save 3" | 'Save 3':
-                    self.player = Player(data["3"])
+                    self.player = Player(
+                        data["1"]["name"], 
+                        data["1"]["health"], 
+                        data["1"]["strength"], 
+                        data["1"]["speed"],
+                        data["1"]["agility"],
+                        data["1"]["weapon"],
+                        data["1"]["inventory"])
                     is_choosing = False
                 case _:
                     print("Invalid selection.\nSelect another option.")
@@ -176,9 +197,9 @@ class Game():
         file.close()
         
         print("-----------------")
-        print(f"| Save 1: {data["1"]} |\n")
-        print(f"| Save 2: {data["2"]} |\n")
-        print(f"| Save 3: {data["3"]} |")
+        print(f'| Save 1: {data["1"]} |\n')
+        print(f'| Save 2: {data["2"]} |\n')
+        print(f'| Save 3: {data["3"]} |')
         print("-----------------\n")
 
         return data
@@ -186,7 +207,7 @@ class Game():
     @staticmethod
     def save_data_to_file(data):
         file = open("saves/saves.json", "w")
-        json.dump(data, file)
+        json.dump(data, file, indent=4)
         file.close()
 
     @staticmethod

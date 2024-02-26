@@ -55,7 +55,7 @@ class Player(Entity):
 
 		return {
 			"name": self.get_name(), 
-			"Health": self.get_health(), 
+			"health": self.get_health(), 
 			"strength": self.get_strength(), 
 			"speed": self.get_speed(), 
 			"agility": self.get_agility(), 
