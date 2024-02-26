@@ -22,7 +22,17 @@ class Game():
 
             match choice:
                 case "1":
-                    pass
+                    name = input("Enter Player name: ")
+                    self.player = Player(
+                        name,
+                        10,
+                        10,
+                        10,
+                        10,
+                        Item.create_item("sword"),
+                        {}
+                        )
+                    self.play()
                 case "2":
                     self.load()
                 case "3":
@@ -45,6 +55,7 @@ class Game():
                 case "1" | "save1" | "Save1" | "save 1" | 'Save 1':
                     if data["1"] == "empty":
                         data["1"] = self.player.player_save_data()
+                        print(data)
                         Game.save_data_to_file(data)
                         is_choosing = False
                     else:
@@ -112,11 +123,50 @@ class Game():
         is_playing = True
 
         while is_playing:
+            print("\n")
             print("| 1 - Move to next room |\n")
             print("| 2 - Check Stats")
             print("| 3 - Save Game |\n")
 
             choice = input("Selection (1/2/3): ")
+
+            match choice:
+                case "1":
+                    print("You walk into the next room")
+                    self.fight()
+                case "2":
+                    self.player.display_stats()
+                case "3":
+                    self.save()
+
+
+    def fight(self):
+        is_fighting = True
+
+        while is_fighting:
+            monster = Monster.create_monster()
+
+            print(f"You are being attacked by a {monster.get_name()}")
+            
+            print("-----------------")
+            print(f"| 1 - Attack |\n")
+            print(f"| 2 - Inventory |\n")
+            print(f"| 3 - Run |")
+            print("-----------------\n")
+            choice = input("Selection: ")
+
+            match choice:
+                case "1":
+                    is_fighting = Game.fight_order(monster, self.player)
+                case "2":
+                    print("\nNeeds to be implamented\n")
+                case "3":
+                    pass
+                case _:
+                    print("\nInvalid Selection\n")
+
+
+
 
     # class Helper Functions
     @staticmethod
@@ -140,8 +190,57 @@ class Game():
         file.close()
 
     @staticmethod
-    def fight():
-        pass
+    def fight_order(monster, player):
+            if monster.get_speed() > player.get_speed():
+                print(f"{monster.get_name()} attacks first\n")
+                monster_damage = monster.attack()
+                player.take_damage(monster_damage)
+                if Game.check_health(monster, player) == "player-zero":
+                    print("Player has died")
+                    return False
+                print("------------\n")
+                print(f"You attack the {monster.get_name()}\n")
+                player_damage = player.attack()
+                monster.take_damage(player_damage)
+                if Game.check_health(monster, player) == "monster-zero":
+                    print(f"{player.get_name()} has killed {monster.get_name()}")
+                    return False
+                print("------------\n")
+                print(f"Player Health: {player.get_health()}")
+                print(f"{monster.get_name()}: {monster.get_health()}")
+            else:
+                print("Player attacks first\n")
+                print(f"You attack the {monster.get_name()}\n")
+                player_damage = player.attack()
+                monster.take_damage(player_damage)
+                if Game.check_health(monster, player) == "monster-zero":
+                    print(f"{player.get_name()} has killed {monster.get_name()}")
+                    return False
+                print("------------\n")
+                print(f"{monster.get_name()} attacks\n")
+                monster_damage = monster.attack()
+                player.take_damage(monster_damage)
+                if Game.check_health(monster, player) == "player-zero":
+                    print("Player has died")
+                    return False
+                print("------------\n")
+                print(f"Player Health: {player.get_health()}")
+                print(f"{monster.get_name()}: {monster.get_health()}")
+
+            return True
+
+    @staticmethod
+    def check_health(monster, player):
+        if monster.get_health() <= 0:
+            return "monster-zero"
+        
+        if player.get_health() <= 0:
+            return "player-zero"
+        
+        return None
+
+    
+    
 
 
 
