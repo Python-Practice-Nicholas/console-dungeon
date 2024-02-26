@@ -1,13 +1,18 @@
 from Entity import Entity
 import json
+from random import randint
 
 
 class Monster(Entity):
 	
 	@staticmethod
-	def create_monster(name):
+	def create_monster():
 		"""Static method to creat a new Monster"""
-		with open('../json/monsters.json') as file:
+		names = ["bat"]
+		index = randint(0,len(names) - 1)
+		print(index)
+		name = names[index]
+		with open('src/json/monsters.json') as file:
 			data = json.load(file)
 			monster_data = data[name]
 			health = monster_data["health"]
@@ -19,4 +24,15 @@ class Monster(Entity):
 			
 			monster = Monster(name, health, strength, speed, agility, weapon, inventory)
 			return monster
+	
+	def get_weapon(self):
+		return self._weapon
+
+	def attack(self):
+		strength = self.get_strength()
+		weapon = self.get_weapon()
+
+		return strength + weapon.affect
+
+	
 			
