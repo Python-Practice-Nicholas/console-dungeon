@@ -20,7 +20,7 @@ class Item():
 	@staticmethod
 	def create_item(name):
 		"""Static method to create a new item"""
-		with open("json/items.json") as file:
+		with open("src/json/items.json") as file:
 			data = json.load(file)
 			item_data = data[name]
 			description = item_data["description"]
