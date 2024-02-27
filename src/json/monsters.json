@@ -1,10 +1,16 @@
 {
 	"bat": {
-		"health": 3,
+		"health": 100,
 		"strength": 1,
 		"speed": 5,
 		"agility": 7,
-		"weapon": 0,
+		"weapon": {
+			"name": "bite",
+			"description": "An animalistic attack",
+			"affect": 1,
+			"apply_to": "strength",
+			"type": "weapon"
+		},
 		"inventory": 0
 	}
 }
