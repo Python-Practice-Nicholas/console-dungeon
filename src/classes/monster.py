@@ -32,7 +32,7 @@ class Monster(Entity):
 		strength = self.get_strength()
 		weapon = self.get_weapon()
 
-		return strength + weapon.affect
+		return strength + weapon["affect"]
 
 	
 			
