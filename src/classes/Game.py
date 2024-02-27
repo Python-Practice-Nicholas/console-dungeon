@@ -1,8 +1,9 @@
 from Player import Player
 from monster import Monster
 from Item import Item
+from random import randint
 import json
-import os
+
 
 class Game():
     
@@ -26,9 +27,9 @@ class Game():
                     self.player = Player(
                         name,
                         10,
-                        10,
-                        10,
-                        10,
+                        randint(0,11),
+                        randint(0,11),
+                        randint(0,11),
                         Item.create_item("sword"),
                         {}
                         )
@@ -182,7 +183,11 @@ class Game():
                 case "2":
                     print("\nNeeds to be implamented\n")
                 case "3":
-                    pass
+                    if self.player.get_agility() > monster.get_agility():
+                        print("\nYou have escaped the monster.\n")
+                        is_fighting = False
+                    else:
+                        print("\nYou can't is escape the monster\n")
                 case _:
                     print("\nInvalid Selection\n")
 
