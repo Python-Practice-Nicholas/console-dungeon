@@ -1,5 +1,6 @@
 from Entity import Entity
 import json
+import os.path
 from random import randint
 
 
@@ -8,11 +9,12 @@ class Monster(Entity):
 	@staticmethod
 	def create_monster():
 		"""Static method to creat a new Monster"""
+		monster_path = os.path.relpath("json/monsters.json", "classes")
 		names = ["bat"]
 		index = randint(0,len(names) - 1)
 		print(index)
 		name = names[index]
-		with open('src/json/monsters.json') as file:
+		with open(monster_path) as file:
 			data = json.load(file)
 			monster_data = data[name]
 			health = monster_data["health"]

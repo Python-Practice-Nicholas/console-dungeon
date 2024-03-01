@@ -1,4 +1,5 @@
 import json
+import os.path
 
 class Item():
 	def __init__(self, name, description, affect, apply_to, type):
@@ -20,7 +21,8 @@ class Item():
 	@staticmethod
 	def create_item(name):
 		"""Static method to create a new item"""
-		with open("src/json/items.json") as file:
+		item_path = os.path.relpath("json/items.json", "classes")
+		with open(item_path) as file:
 			data = json.load(file)
 			item_data = data[name]
 			description = item_data["description"]
